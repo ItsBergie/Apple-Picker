@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,18 +32,18 @@ public class HighScore : MonoBehaviour
             PlayerPrefs.SetInt("HighScore", value);
             if (_UI_TEXT! != null)
             {
-                _UI_TEXT.text = "High Score: " + value.ToString("#.0");
+                _UI_TEXT.text = "High Score: " + value.ToString("#,0");
             }
         }
     }
 
-    static public void TRY_SET_HIGHSCORE(int scoreToTry)
+    static public void TRY_SET_HIGH_SCORE(int scoreToTry)
     {
-        if (scoreToTry <= _SCORE)
+        if (scoreToTry <= SCORE)
         {
             return;
         }
-        _SCORE = scoreToTry;
+        SCORE = scoreToTry;
     }
 
     [Tooltip("Check this box to reset the HighScore in playerPref")]
@@ -54,7 +55,6 @@ public class HighScore : MonoBehaviour
         {
             resetHighScoreNow = false;
             PlayerPrefs.SetInt("HighScore", 1000);
-
         }
     }
 }
