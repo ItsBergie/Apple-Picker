@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class Apple : MonoBehaviour
 {
+    [Header("Inscribed")]
+    public int points = 100; // Regular apple worth 100 by default
 
-    public static float bottomY = -20f; // Static = cant change
+    public static float bottomY = -20f;
 
-    // Update is called once per frame
     void Update()
     {
         if (transform.position.y < bottomY)
         {
             Destroy(this.gameObject);
-            
+
             // Get a reference to the ApplePicker component of Main Camera
             ApplePicker apScript = Camera.main.GetComponent<ApplePicker>();
             // Call a public AppleMissed() in apScript

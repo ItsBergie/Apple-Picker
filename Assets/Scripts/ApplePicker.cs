@@ -30,9 +30,15 @@ public class ApplePicker : MonoBehaviour
 
     public void AppleMissed()
     {
-        //Destroy all of the falling apples
         GameObject[] appleArray = GameObject.FindGameObjectsWithTag("Apple");
         foreach (GameObject tempGO in appleArray)
+        {
+            Destroy(tempGO);
+        }   
+
+        // Add this for gold apples too:
+        GameObject[] goldAppleArray = GameObject.FindGameObjectsWithTag("Gold Apple");
+        foreach (GameObject tempGO in goldAppleArray)
         {
             Destroy(tempGO);
         }
