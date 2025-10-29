@@ -47,7 +47,13 @@ public class ApplePicker : MonoBehaviour
 
         if (basketList.Count == 0)
         {
-            SceneManager.LoadScene("_Scene_0");
+            // Save current score before leaving the game scene
+            PlayerPrefs.SetInt("LastScore", FindObjectOfType<ScoreCounter>().score);
+
+            // Update high score
+            HighScore.TRY_SET_HIGH_SCORE(FindObjectOfType<ScoreCounter>().score);
+
+            SceneManager.LoadScene("GameOverScene");
         }
     }
     // Update is called once per frame
